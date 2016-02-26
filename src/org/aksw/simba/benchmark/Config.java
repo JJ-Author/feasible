@@ -40,6 +40,17 @@ public class Config {
 	public static boolean OFFSET  = false ;  // e.g., i dont consider OFFSET to be very important CLAUSE for benchmark generation. You can trun on if you disagree with me
 	//-------Query Runtime---------
 	public static boolean runTime = true;
+	
+	
+	//new Configs for SDW
+	public static String queryLogDir = "/home/hadoop/Desktop/Master/Feasible";
+	public static String endpoint = "http://localhost:8898/sparql";//"http://localhost:9999/blazegraph/namespace/kb/sparql";
+	public static String graph = null;//"http://aksw.org/feasible"; //can be null
+	public static int min_result_size = 0; //can be zero
+	public static int max_run_time = -1; //in seconds (negative unlimited)
+	
+	
+	
 
 	public static void main(String[] args) {
 		System.out.println(CONSTRUCT);

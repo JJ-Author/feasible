@@ -13,7 +13,7 @@ import org.aksw.simba.benchmark.log.operations.CleanQueryReader;
 public class QuerySelecter {
 
 	public static void main(String[] args) throws IOException {
-		String queryFileWithStats = "SWDF-CleanQueries.txt";
+		String queryFileWithStats = "Queries.txt";
 		// You can set various Filters on benchmark query features and SPARQL clauses . e.g  Resultsize should be between 5 to 10 and BGPs must be greater than 2
 		// and Triple patterns should be less or equal to 10 or Mean triple pattern selectivity >= 0.0001
 		//See the config file for further deatils

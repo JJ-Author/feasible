@@ -225,9 +225,9 @@ public class Selectivity {
 		initializeRepoConnection(endpoint);
 		String queryStr ="";
 		if(graph==null)
-			queryStr = "SELECT count(?s) AS ?totalSize WHERE {?s ?p ?o}";
+			queryStr = "SELECT (count(?s) AS ?totalSize ) WHERE {?s ?p ?o}";
 		else
-			queryStr = "SELECT count(?s) AS ?totalSize FROM <"+graph+"> WHERE {?s ?p ?o}";
+			queryStr = "SELECT (count(?s) AS ?totalSize ) FROM <"+graph+"> WHERE {?s ?p ?o}";
 		TupleQuery tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL,queryStr );
 		TupleQueryResult res = tupleQuery.evaluate();
 		while(res.hasNext())

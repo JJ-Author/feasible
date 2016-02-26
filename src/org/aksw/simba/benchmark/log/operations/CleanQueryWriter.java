@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.aksw.simba.benchmark.Config;
 import org.aksw.simba.largerdfbench.util.QueryStatistics;
 import org.aksw.simba.largerdfbench.util.Selectivity;
 import org.openrdf.query.MalformedQueryException;
@@ -144,7 +145,7 @@ public class CleanQueryWriter {
 		bw.write("#--end---");
 		bw.close();
 		br.close();
-		Selectivity.toBW.close();
+		//Selectivity.toBW.close();
 		System.out.println("Query with stats successfully writen to "+outputQueryFile+"\nTotal queries with runtime error: " + errorCount);
 		System.out.println("Total queries with zero results: "+zeroCount+"\nNote: Zero result queries are not considered");
 		System.out.println("Total Queries with timeOuts: " + timeOutCount +"\nTime out queries are written to timeOutQueries.txt");
@@ -181,7 +182,7 @@ public class CleanQueryWriter {
 		resultSize = Selectivity.getQueryResultSize(query, endpoint,"graph");
 		long exeTime = System.currentTimeMillis() - curTime ;
 		//System.out.println(resultSize);
-		if (resultSize>0)
+		if (resultSize>=Config.min_result_size)
 		{
 
 			try {
@@ -220,7 +221,7 @@ public class CleanQueryWriter {
 		long curTime = System.currentTimeMillis();
 		resultSize = Selectivity.getQueryResultSize(query, endpoint,"graph");
 		long exeTime = System.currentTimeMillis() - curTime ;
-		if (resultSize==1)
+		if (resultSize>=Config.min_result_size)
 		{
 		try {
 			System.out.println(count+ ": writing...");
@@ -255,7 +256,7 @@ public class CleanQueryWriter {
 		long curTime = System.currentTimeMillis();
 		resultSize = Selectivity.getQueryResultSize(query, endpoint,"graph");
 		long exeTime = System.currentTimeMillis() - curTime ;
-		if (resultSize>0)
+		if (resultSize>=Config.min_result_size)
 		{
 
 			try {
@@ -294,7 +295,7 @@ public class CleanQueryWriter {
 		resultSize = Selectivity.getQueryResultSize(query, endpoint,"tuple");
 		long exeTime = System.currentTimeMillis() - curTime ;
 		//System.out.println(query);
-		if (resultSize>0)
+		if (resultSize>=Config.min_result_size)
 		{
 
 			try {
